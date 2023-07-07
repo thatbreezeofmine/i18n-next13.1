@@ -57,12 +57,12 @@ export const getTranslator = async locale => {
   }
 }
 
-const getCountryFromLocale = (locale) => {
+export const getCountryFromLocale = (locale) => {
   const country = locale.split("-")[1];
   return country ? [country.toUpperCase()] : [];
 };
 
-const getLanguageFromLocale = (locale) => {
+export const getLanguageFromLocale = (locale) => {
   const country = locale.split("-")[0];
   return country ? [country.toUpperCase()] : [];
 };
