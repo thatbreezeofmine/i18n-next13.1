@@ -15,6 +15,7 @@ export default async function Demo({ params }) {
       <p>{JSON.stringify(params)}</p>
 
       <h1>Example page: {translate("welcome.helloWorld")}</h1>
+      <p>this is the about page</p>
     </div>
   )
 }

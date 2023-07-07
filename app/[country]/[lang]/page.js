@@ -27,7 +27,7 @@ const Home = ({ params }) => {
       <div>
         <p>{JSON.stringify(params)}</p>
         <h1>
-          {translate && translate("welcome.helloWorld")} {pathname}
+          {translate && translate("welcome.helloWorld")}
         </h1>
       </div>
     </>
