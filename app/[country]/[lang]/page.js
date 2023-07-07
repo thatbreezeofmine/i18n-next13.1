@@ -1,5 +1,5 @@
 "use client";
-import { getLocalePartsFrom, locales, getTranslator, defaultLocales, defaultLocale } from "@/middleware";
+import { getLocalePartsFrom, locales, getTranslator, defaultLocales, getLanguageFromLocale, getCountryFromLocale } from "@/middleware";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -21,16 +21,6 @@ const Home = ({ params }) => {
 
     fetchTranslator();
   }, [params.lang, params.country]);
-
-  const getCountryFromLocale = (locale) => {
-    const country = locale.split("-")[1];
-    return country ? [country.toUpperCase()] : [];
-  };
-
-  const getLanguageFromLocale = (locale) => {
-    const country = locale.split("-")[0];
-    return country ? [country.toUpperCase()] : [];
-  };
   
   let countries = []
   locales.forEach((locale) => {
@@ -68,13 +58,7 @@ const Home = ({ params }) => {
 
       const locale = combo
       const result = getLocalePartsFrom({ locale })
-      // if (result) {
         navigate.push(`/${result.country}/${result.lang}${pathname.replace(params.lang, "").replace(params.country, "")}`)
-      // } else {
-      //   const defaultLocaleParts = getLocalePartsFrom({ defaultLocale })
-      //   navigate.push(`/${defaultLocaleParts.country}/${defaultLocaleParts.lang}${pathname.replace(params.lang, "").replace(params.country, "")}`)
-      // }
-
     }
   }
 

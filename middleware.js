@@ -57,18 +57,15 @@ export const getTranslator = async locale => {
   }
 }
 
-export const useTranslator = async (lang, country) => {
-  return await getTranslator(
-    `${lang}-${country}`
-  ).then(
-    (translate) => {
-      return translate
-    }
-  );
-}
-// await getTranslator(
-//   `${params.lang}-${params.country.toUpperCase()}`
-// );
+const getCountryFromLocale = (locale) => {
+  const country = locale.split("-")[1];
+  return country ? [country.toUpperCase()] : [];
+};
+
+const getLanguageFromLocale = (locale) => {
+  const country = locale.split("-")[0];
+  return country ? [country.toUpperCase()] : [];
+};
 
 const findBestMatchingLocale = (acceptLangHeader, currentPathnameParts) => {
   // parse the locales acceptable in the header, and sort them by priority (q)
